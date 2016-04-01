@@ -1,0 +1,16 @@
+<CollectdWinConfig>
+
+  <GeneralSettings Interval="<%=@scan_interval%>" Timeout="120" StoreRates="false" />
+   
+  <Plugins>
+    <Plugin Name="Statsd" Class="BloombergFLP.CollectdWin.StatsdPlugin" Enable="<%=@plugin_statsd%>" />
+    <Plugin Name="WindowsPerformanceCounter" Class="BloombergFLP.CollectdWin.WindowsPerformanceCounterPlugin" Enable="<%=@plugin_winperfcounter%>" />
+    <Plugin Name="Amqp" Class="BloombergFLP.CollectdWin.AmqpPlugin" Enable="<%=@plugin_amqp%>" />
+    <Plugin Name="WriteHttp" Class="BloombergFLP.CollectdWin.WriteHttpPlugin" Enable="<%=@plugin_writehttp%>" />
+    <Plugin Name="Console" Class="BloombergFLP.CollectdWin.ConsolePlugin" Enable="<%=@plugin_console%>" />
+  </Plugins>
+
+  <MetaData>
+    <Tag Name="api-version" Value="1"/>
+  </MetaData>
+</CollectdWinConfig>

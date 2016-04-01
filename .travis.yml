@@ -1,0 +1,17 @@
+language: ruby
+bundler_args: "--without system_tests"
+script: bundle exec rake validate && bundle exec rake lint && bundle exec rake spec
+  SPEC_OPTS='--format documentation' && bundle exec rake metadata_lint
+matrix:
+  include:
+    - rvm: 2.0.0
+      env: PUPPET_VERSION="~> 3.8.1" FACTER_VERSION="~>2.3.0"
+    - rvm: 2.1.8
+      env: PUPPET_VERSION="~> 4.4.0"
+    - rvm: 2.1.8
+      env: PUPPET_VERSION="~> 4.3.0" FACTER_VERSION="~> 2.4.0"
+    - rvm: 2.1.6
+      env: PUPPET_VERSION="~> 4.2.0" FACTER_VERSION="~> 2.4.0"
+notifications:
+  email: false 
+
