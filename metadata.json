@@ -1,0 +1,15 @@
+{
+  "name": "kage-conwin_collectdwin_",
+  "version": "0.1.0",
+  "author": "kage",
+  "summary": "Installs collectdwin on Windows Host and is able to configure it.",
+  "license": "Apache-2.0",
+  "source": "",
+  "project_page": null,
+  "issues_url": null,
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ],
+  "data_provider": null
+}
+

@@ -1,0 +1,14 @@
+# This file managed by Puppet
+<WindowsPerformanceCounter>
+  <ReloadConfiguration Enable="true" Interval="900" />
+  <Counters>
+  <% if !scope['conwin_collectdwin::perf_counters'].nil?
+       scope['conwin_collectdwin::perf_counters'].each do |counter| %>
+    <Counter Category="<%= counter.category %>" Name="<%= counter.name %>" Instance="<%= counter.instance %>" CollectdPlugin="<%= counter.cd_plugin %>" CollectdPluginInstance="<%= counter.cd_plugininstance %>" CollectdType="<%= counter.cd_type %>" CollectdTypeInstance="<%= counter.cd_typeinstance %>" />
+  <%   end
+     end
+  %>
+  </Counters>
+</WindowsPerformanceCounter>
+
+# untested
