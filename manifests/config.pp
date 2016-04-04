@@ -11,10 +11,10 @@ class conwin_collectdwin::config (
     notify  => Service['CollectdWinService'],
   }
   
-  file { $config_file_write_http:
-    ensure    => 'present',
-    content   => regsubst(template('conwin_collectdwin/WriteHttp.config.erb'), '\n', '\r\n', 'EMG'),
-    notify  => Service['CollectdWinService'],
-  }
+#  file { $config_file_write_http:
+#    ensure    => 'present',
+#    content   => regsubst(template('conwin_collectdwin/WriteHttp.config.erb'), '\n', '\r\n', 'EMG'),
+#    notify  => Service['CollectdWinService'],
+#  }
 
 }
