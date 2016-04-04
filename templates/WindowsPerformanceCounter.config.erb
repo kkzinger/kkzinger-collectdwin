@@ -2,7 +2,8 @@
 <WindowsPerformanceCounter>
   <ReloadConfiguration Enable="true" Interval="900" />
   <Counters>
-  <%scope['conwin_collectdwin::config_perfcounters'].each do |counter| %>
+  <% if !scope['conwin_collectdwin::config_perfcounters'].nil?
+       scope['conwin_collectdwin::config_perfcounters'].each do |counter| %>
     <Counter Category="<%= counter['category'] %>" Name="<%= counter['name'] %>" Instance="<%= counter['instance'] %>" CollectdPlugin="<%= counter['cd_plugin'] %>" CollectdPluginInstance="<%= counter['cd_plugininstance'] %>" CollectdType="<%= counter['cd_type'] %>" CollectdTypeInstance="<%= counter['cd_typeinstance'] %>" />
   <%   end
      end
