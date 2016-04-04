@@ -25,5 +25,15 @@ class conwin_collectdwin::params {
       cd_type           => 'memory',
       cd_typeinstance   => 'free',
     },
+    {
+      category          => 'Network Interface',
+      name              => 'Packets Received/Sec,Pakets Sent/Sec',
+      instance          => '*',
+      cd_plugin         => 'interface',
+      cd_plugininstance => '',
+      cd_type           => 'if_packets',
+      cd_typeinstance   => '',
+    },
+
   ]
 }
