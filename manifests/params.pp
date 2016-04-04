@@ -36,4 +36,15 @@ class conwin_collectdwin::params {
     },
 
   ]
+  $config_write_http = [
+    {
+      node_name     => 'stunnel-to-lab-perfmon-collector',
+      url           => 'http://localhost:9223/collectd',
+      timeout       => '100',
+      batch_size    => '30',
+      max_idle_time => '600000',
+      proxy_enable  => 'false',
+      proxy_url     => '',
+    },
+  ]
 }

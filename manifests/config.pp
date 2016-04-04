@@ -14,15 +14,15 @@ class conwin_collectdwin::config (
 
 
   file { $config_file_win_perfcounter:
-    ensure    => 'present',
-    content   => template('conwin_collectdwin/WindowsPerformanceCounter.config.erb'),
+    ensure  => 'present',
+    content => template('conwin_collectdwin/WindowsPerformanceCounter.config.erb'),
     notify  => Service['CollectdWinService'],
   }
   
-#  file { $config_file_write_http:
-#    ensure    => 'present',
-#    content   => regsubst(template('conwin_collectdwin/WriteHttp.config.erb'), '\n', '\r\n', 'EMG'),
-#    notify  => Service['CollectdWinService'],
-#  }
+  file { $config_file_write_http:
+    ensure  => 'present',
+    content => template('conwin_collectdwin/WriteHttp.config.erb'),
+    notify  => Service['CollectdWinService'],
+  }
 
 }
