@@ -6,4 +6,24 @@ class conwin_collectdwin::params {
   $config = $::conwin_collectdwin::config
   $config_file_write_http ='C:\Program Files\Bloomberg LP\CollectdWin\config\WriteHttp.config'
   $config_file_win_perfcounter = 'C:\Program Files\Bloomberg LP\CollectdWin\config\WindowsPerformanceCounter.config'
+  $config_perfcounters = [
+    {
+      category          => 'Processor',
+      name              => '% Processor Time',
+      instance          => '_Total',
+      cd_plugin         => 'cpu',
+      cd_plugininstance => 'cpu-average',
+      cd_type           => 'cpu',
+      cd_typeinstance   => 'processor',
+    },
+    {
+      category          => 'Memory',
+      name              => 'Available Bytes',
+      instance          => '',
+      cd_plugin         => 'memory',
+      cd_plugininstance => '',
+      cd_type           => 'memory',
+      cd_typeinstance   => 'free',
+    },
+  ]
 }
