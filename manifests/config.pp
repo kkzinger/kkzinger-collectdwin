@@ -4,6 +4,7 @@ class conwin_collectdwin::config (
   $config_file_win_perfcounter = $::conwin_collectdwin::params::config_file_win_perfcounter,
   $config_file_write_http_ = $::conwin_collectdwin::params::config_file_win_perfcounter,
   $service_state = $::conwin_collectdwin::params::service_state,
+  $config_perfcounters= $::conwin_collectdwin::params::config_perfcounters,
 )inherits ::conwin_collectdwin::params{
 
   service{ 'CollectdWinService':
