@@ -3,7 +3,7 @@
   <ReloadConfiguration Enable="true" Interval="900" />
   <Counters>
   <% if !scope['conwin_collectdwin::config::config_perfcounters'].nil?
-       scope['conwin_collectdwin::config::config_perfcounters'].each do |counter| %>
+       scope['conwin_collectdwin::config::config_perfcounters'].each do |counter| -%>
     <Counter Category="<%= counter['category'] %>" Name="<%= counter['name'] %>" Instance="<%= counter['instance'] %>" CollectdPlugin="<%= counter['cd_plugin'] %>" CollectdPluginInstance="<%= counter['cd_plugininstance'] %>" CollectdType="<%= counter['cd_type'] %>" CollectdTypeInstance="<%= counter['cd_typeinstance'] %>" />
   <%   end
      end
