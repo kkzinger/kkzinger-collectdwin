@@ -47,8 +47,8 @@ class conwin_collectdwin (
   $debug_level,
   $service_state,
 ){
-  include ::conwin_collectdwin::install
-  include ::conwin_collectdwin::config
-
-  Class['::conwin_collectdwin::install'] -> Class['::conwin_collectdwin::config']
+  Anchor['conwin_collectdwin::begin'] ->
+    Class['::conwin_collectdwin::install'] -> 
+    Class['::conwin_collectdwin::config'] ->
+  Anchor['conwin_collectdwin::end']
 }
