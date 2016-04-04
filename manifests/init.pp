@@ -47,8 +47,8 @@ class conwin_collectdwin (
   $debug_level,
   $service_state,
 ){
-  Anchor['conwin_collectdwin::begin'] ->
-    Class['::conwin_collectdwin::install'] -> 
-    Class['::conwin_collectdwin::config'] ->
-  Anchor['conwin_collectdwin::end']
+  anchor{'::conwin_collectdwin::begin':} ->
+  class{'::conwin_collectdwin::install':} -> 
+  class{'::conwin_collectdwin::config':} ->
+  anchor{'::conwin_collectdwin::end':}
 }
