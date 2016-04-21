@@ -14,7 +14,7 @@ class conwin_collectdwin::params {
       cd_plugin         => 'cpu',
       cd_plugininstance => 'cpu-average',
       cd_type           => 'cpu',
-      cd_typeinstance   => 'processor_foo',
+      cd_typeinstance   => 'processor',
     },
     {
       category          => 'Memory',
