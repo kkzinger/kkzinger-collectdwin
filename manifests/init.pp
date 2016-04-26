@@ -46,7 +46,7 @@ class conwin_collectdwin (
   $collectdwin_version,
   $debug_level,
   $service_state,
-  $write_http_config = undef,
+  $config_write_http = undef,
 ){
   anchor{'::conwin_collectdwin::begin':} ->
   class{'::conwin_collectdwin::install':} -> 
