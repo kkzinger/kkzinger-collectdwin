@@ -16,7 +16,7 @@ class conwin_collectdwin::config (
 
   file { $config_file_win_perfcounter:
     ensure  => 'present',
-    content => template('conwin_collectdwin/WindowsPerformanceCounter.config.erb'),
+    content => regsubst(template('conwin_collectdwin/WindowsPerformanceCounter.config.erb'), '\n', "\r\n", 'EMG'),
     notify  => Service['CollectdWinService'],
   }
   
