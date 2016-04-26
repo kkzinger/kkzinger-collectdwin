@@ -1,7 +1,7 @@
 <!-- This file is managed by Puppet -->
 <WriteHttp>
   <Nodes>
-  <% if !scope['conwin_collectdwin::config::config_write_http'].nil?
+  <%- if !scope['conwin_collectdwin::config::config_write_http'].nil?
        scope['conwin_collectdwin::config::config_write_http'].each do |target| -%>
 
     <Node Name="<%=target['node_name']%>" Url="<%=target['url']%>" Timeout="<%=target['timeout']%>" BatchSize="<%=target['batch_size']%>" MaxIdleTime="<%=target['max_idle_time']%>">
@@ -9,6 +9,6 @@
     </Node>
   <%   end
      end
-  -%>
+  %>
   </Nodes>
 </WriteHttp>
