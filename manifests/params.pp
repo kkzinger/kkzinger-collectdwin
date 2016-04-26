@@ -6,6 +6,7 @@ class conwin_collectdwin::params {
   $config = $::conwin_collectdwin::config
   $config_file_write_http ='C:\Program Files\Bloomberg LP\CollectdWin\config\WriteHttp.config'
   $config_file_win_perfcounter = 'C:\Program Files\Bloomberg LP\CollectdWin\config\WindowsPerformanceCounter.config'
+  $config_write_http = $::conwin_collectdwin::config_write_http
   $config_perfcounters = [
     {
       category          => 'Processor',
@@ -36,15 +37,15 @@ class conwin_collectdwin::params {
     },
 
   ]
-  $config_write_http = [
-    {
-      node_name     => 'stunnel-to-lab-perfmon-collector',
-      url           => 'http://localhost:9223/collectd',
-      timeout       => '100',
-      batch_size    => '30',
-      max_idle_time => '600000',
-      proxy_enable  => 'false',
-      proxy_url     => '',
-    },
-  ]
+#  $config_write_http = [
+#    {
+#      node_name     => 'stunnel-to-lab-perfmon-collector',
+#      url           => 'http://localhost:9223/collectd',
+#      timeout       => '100',
+#      batch_size    => '30',
+#      max_idle_time => '600000',
+#      proxy_enable  => 'false',
+#      proxy_url     => '',
+#    },
+#  ]
 }
