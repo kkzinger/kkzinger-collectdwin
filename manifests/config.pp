@@ -22,7 +22,7 @@ class conwin_collectdwin::config (
   
   file { $config_file_write_http:
     ensure  => 'present',
-    content => template('conwin_collectdwin/WriteHttp.config.erb'),
+    content => regsubst(template('conwin_collectdwin/WriteHttp.config.erb'), '\n', "\r\n", 'EMG'),
     notify  => Service['CollectdWinService'],
   }
 
