@@ -1,5 +1,5 @@
 {
-  "name": "kage-conwin_collectdwin_",
+  "name": "kkziner-collectdwin",
   "version": "0.1.0",
   "author": "kage",
   "summary": "Installs collectdwin on Windows Host and is able to configure it.",

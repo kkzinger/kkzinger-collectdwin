@@ -1,8 +1,8 @@
 <!-- This file is managed by Puppet -->
 <WriteHttp>
   <Nodes>
-  <%- if !scope['conwin_collectdwin::config::config_write_http'].nil?
-       scope['conwin_collectdwin::config::config_write_http'].each do |target| -%>
+  <%- if !scope['collectdwin::config::config_write_http'].nil?
+       scope['collectdwin::config::config_write_http'].each do |target| -%>
 
     <Node Name="<%=target['node_name']%>" Url="<%=target['url']%>" Timeout="<%=target['timeout']%>" BatchSize="<%=target['batch_size']%>" MaxIdleTime="<%=target['max_idle_time']%>">
       <Proxy Enable="<%=target['proxy_enable']%>" Url="<%=target['proxy_url']%>" />

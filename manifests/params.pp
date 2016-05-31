@@ -1,12 +1,13 @@
-class conwin_collectdwin::params {
+class collectdwin::params {
 
-  $collectdwin_version = $::conwin_collectdwin::collectdwin_version
-  $service_state = $::conwin_collectdwin::service_state
-  $debug_level = $::conwin_collectdwin::debug_level
-  $config = $::conwin_collectdwin::config
+  $collectdwin_version = $::collectdwin::collectdwin_version
+  $service_state = $::collectdwin::service_state
+  $debug_level = $::collectdwin::debug_level
+  $config = $::collectdwin::config
   $config_file_write_http ='C:\Program Files\Bloomberg LP\CollectdWin\config\WriteHttp.config'
   $config_file_win_perfcounter = 'C:\Program Files\Bloomberg LP\CollectdWin\config\WindowsPerformanceCounter.config'
-  $config_write_http = $::conwin_collectdwin::config_write_http
+  $config_write_http = $::collectdwin::config_write_http
+
   $config_perfcounters = [
     {
       category          => 'Processor',

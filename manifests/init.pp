@@ -1,7 +1,7 @@
-# Class: conwin_collectdwin_
+# Class: collectdwin_
 # ===========================
 #
-# Full description of class conwin_collectdwin_ here.
+# Full description of class collectdwin_ here.
 #
 # Parameters
 # ----------
@@ -28,7 +28,7 @@
 # --------
 #
 # @example
-#    class { 'conwin_collectdwin_':
+#    class { 'collectdwin_':
 #      servers => [ 'pool.ntp.org', 'ntp.local.company.com' ],
 #    }
 #
@@ -42,14 +42,14 @@
 #
 # Copyright 2016 Your name here, unless otherwise noted.
 #
-class conwin_collectdwin (
+class collectdwin (
   $collectdwin_version,
   $debug_level,
   $service_state,
   $config_write_http = undef,
 ){
-  anchor{'::conwin_collectdwin::begin':} ->
-  class{'::conwin_collectdwin::install':} -> 
-  class{'::conwin_collectdwin::config':} ->
-  anchor{'::conwin_collectdwin::end':}
+  anchor{'::collectdwin::begin':} ->
+  class{'::collectdwin::install':} -> 
+  class{'::collectdwin::config':} ->
+  anchor{'::collectdwin::end':}
 }

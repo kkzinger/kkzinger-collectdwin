@@ -1,12 +1,6 @@
-<!--  This file managed by Puppet -->
-<WindowsPerformanceCounter>
-  <ReloadConfiguration Enable="true" Interval="900" />
-  <Counters>
-  <% if !scope['conwin_collectdwin::config::config_perfcounters'].nil?
-       scope['conwin_collectdwin::config::config_perfcounters'].each do |counter| -%>
-    <Counter Category="<%= counter['category'] %>" Name="<%= counter['name'] %>" Instance="<%= counter['instance'] %>" CollectdPlugin="<%= counter['cd_plugin'] %>" CollectdPluginInstance="<%= counter['cd_plugininstance'] %>" CollectdType="<%= counter['cd_type'] %>" CollectdTypeInstance="<%= counter['cd_typeinstance'] %>" />
+  <% if !scope['collectdwin::perfcounter'].nil?
+       scope['collectdwin::perfcounter'].each do |counter| -%>
+    <Counter Category="<%= counter['category'] %>" Name="<%= counter['counter_name'] %>" Instance="<%= counter['instance'] %>" CollectdPlugin="<%= counter['cd_plugin'] %>" CollectdPluginInstance="<%= counter['cd_plugininstance'] %>" CollectdType="<%= counter['cd_type'] %>" CollectdTypeInstance="<%= counter['cd_typeinstance'] %>" />
   <%   end
      end
   -%>
-  </Counters>
-</WindowsPerformanceCounter>
