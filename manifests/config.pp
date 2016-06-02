@@ -17,17 +17,17 @@ class collectdwin::config (
 #    content => regsubst(template('collectdwin/WindowsPerformanceCounter.config.erb'), '\n', "\r\n", 'EMG'),
 #    notify  => Service['CollectdWinService'],
 #  }
-  concat { $config_file_win_perfcounter:
+  concat { 'performance-counter-config':
     warn => true, 
   }
 
-  concat::fragment {"${config_file_win_perfcounter}_pre":
+  concat::fragment {'performance-counter-config_pre':
     target  => $config_file_win_perfcounter,
     content => regsubst(template('collectdwin/WindowsPerformanceCounter.config_pre.erb'), '\n', "\r\n", 'EMG'),
     order   => '01',
   }
 
-  concat::fragment {"${config_file_win_perfcounter}_post":
+  concat::fragment {'performance-counter-config_post':
     target  => $config_file_win_perfcounter,
     content => regsubst(template('collectdwin/WindowsPerformanceCounter.config_post.erb'), '\n', "\r\n", 'EMG'),
     order   => '15',
