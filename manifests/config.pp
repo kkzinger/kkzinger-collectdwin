@@ -19,7 +19,8 @@ class collectdwin::config (
 #  }
   notify{"pfad zu config file ${config_file_win_perfcounter}":}
 
-  concat { 'performance-counter-config':
+  concat { $config_file_win_perfcounter :
+    mode => '',
     path => $config_file_win_perfcounter,
     warn => true, 
   }
