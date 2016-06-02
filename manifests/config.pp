@@ -17,7 +17,8 @@ class collectdwin::config (
 #    content => regsubst(template('collectdwin/WindowsPerformanceCounter.config.erb'), '\n', "\r\n", 'EMG'),
 #    notify  => Service['CollectdWinService'],
 #  }
-  notify{"pfad zu config file ${config_file_win_perfcounter}"}
+  notify{"pfad zu config file ${config_file_win_perfcounter}":}
+
   concat { 'performance-counter-config':
     path => $config_file_win_perfcounter,
     warn => true, 
