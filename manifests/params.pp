@@ -4,8 +4,8 @@ class collectdwin::params {
   $service_state = $::collectdwin::service_state
   $debug_level = $::collectdwin::debug_level
   $config = $::collectdwin::config
-  $config_file_write_http ='C:\Program Files\Bloomberg LP\CollectdWin\config\WriteHttp.config'
-  $config_file_win_perfcounter = 'C:\Program Files\Bloomberg LP\CollectdWin\config\WindowsPerformanceCounter.config'
+  $config_file_write_http ='C:/Program Files/Bloomberg LP/CollectdWin/config/WriteHttp.config'
+  $config_file_win_perfcounter = 'C:/Program Files/Bloomberg LP/CollectdWin/config/WindowsPerformanceCounter.config'
   $config_write_http = $::collectdwin::config_write_http
 
   $config_perfcounters = [
