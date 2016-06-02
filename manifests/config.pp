@@ -18,6 +18,7 @@ class collectdwin::config (
 #    notify  => Service['CollectdWinService'],
 #  }
   concat { 'performance-counter-config':
+    path => $config_file_win_perfcounter,
     warn => true, 
   }
 
