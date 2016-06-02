@@ -15,7 +15,7 @@ define collectdwin::perfcounter (
   $config_file_win_perfcounter = $::collectdwin::params::config_file_win_perfcounter 
   concat::fragment { $name:
     target  => $config_file_win_perfcounter,
-    content => regsubst(template('collectdwin/WindowsPerformanceCounter.config.erb'), '\n', "\r\n", 'EMG',)
+    content => regsubst(template('collectdwin/WindowsPerformanceCounter.config.erb'), '\n', "\r\n", 'EMG'),
     order   => '10',
   }
 
