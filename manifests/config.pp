@@ -23,6 +23,7 @@ class collectdwin::config (
     mode => '0775',
     path => $config_file_win_perfcounter,
     warn => true, 
+    ensure_newline => true,
   }
 
   concat::fragment {'performance-counter-config_pre':

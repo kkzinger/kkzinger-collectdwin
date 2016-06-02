@@ -1,6 +1,1 @@
-  <% if !scope['collectdwin::perfcounter'].nil?
-       scope['collectdwin::perfcounter'].each do |counter| -%>
-    <Counter Category="<%= counter['category'] %>" Name="<%= counter['counter_name'] %>" Instance="<%= counter['instance'] %>" CollectdPlugin="<%= counter['cd_plugin'] %>" CollectdPluginInstance="<%= counter['cd_plugininstance'] %>" CollectdType="<%= counter['cd_type'] %>" CollectdTypeInstance="<%= counter['cd_typeinstance'] %>" />
-  <%   end
-     end
-  -%>
+    <Counter Category="<%= @category %>" Name="<%= @counter_name %>" Instance="<%= @instance %>" CollectdPlugin="<%= @cd_plugin %>" CollectdPluginInstance="<%= @cd_plugininstance %>" CollectdType="<%= @cd_type %>" CollectdTypeInstance="<%= @cd_typeinstance %>" />
