@@ -1,16 +1,22 @@
-# Class: collectdwin_
+# Class: collectdwin
 # ===========================
 #
-# Full description of class collectdwin_ here.
+# This class enables the management of collectdwin on Windows Hosts 
 #
 # Parameters
 # ----------
 #
 # Document parameters here.
 #
-# * `sample parameter`
-# Explanation of what this parameter affects and what it defaults to.
-# e.g. "Specify one or more upstream ntp servers as an array."
+# [*collectdwin_version*]
+#   Version of collectdwin chocolatey package
+#
+# [*debug_level*]
+#   Defines logfile verbosity level of collectdwin (Trace, Debug, Info, Warn, Error and Fatal) Default: Info
+#
+# [*service_state*]
+#   Collectdwin uses a windows service to run measurements as daemon. This parameter controls if the service should be in 'running' or 'stopped' status. Default: running
+#
 #
 # Variables
 # ----------
@@ -35,18 +41,19 @@
 # Authors
 # -------
 #
-# Author Name <author@domain.com>
+# Gerold Katzinger <gerold@katzinger.info>
 #
 # Copyright
 # ---------
 #
-# Copyright 2016 Your name here, unless otherwise noted.
+# Copyright 2016 Gerold Katzinger
 #
 class collectdwin (
   $collectdwin_version,
-  $debug_level,
-  $service_state,
-  $config_write_http = undef,
+  $debug_level = 'Info',
+  $service_state = 'running',
+  $config_write_http = undef, #make defined type for adding http destinations
+  #add variables to enable/disable each plugin
 ){
   anchor{'::collectdwin::begin':} ->
   class{'::collectdwin::install':} ->
