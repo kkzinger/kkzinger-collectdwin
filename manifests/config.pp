@@ -20,7 +20,7 @@ class collectdwin::config (
   notify{"pfad zu config file ${config_file_win_perfcounter}":}
 
   concat { $config_file_win_perfcounter :
-    mode => '',
+    mode => '0775',
     path => $config_file_win_perfcounter,
     warn => true, 
   }
