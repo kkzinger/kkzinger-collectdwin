@@ -13,10 +13,11 @@ class collectdwin::config (
   }
 
 #  file { $config_file_win_perfcounter:
-#    ensure  => 'present',
+#    ensure  => 'present'pfad zu config file ,
 #    content => regsubst(template('collectdwin/WindowsPerformanceCounter.config.erb'), '\n', "\r\n", 'EMG'),
 #    notify  => Service['CollectdWinService'],
 #  }
+  notify{"pfad zu config file ${config_file_win_perfcounter}"}
   concat { 'performance-counter-config':
     path => $config_file_win_perfcounter,
     warn => true, 
