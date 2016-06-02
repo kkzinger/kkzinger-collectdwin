@@ -49,7 +49,7 @@ class collectdwin (
   $config_write_http = undef,
 ){
   anchor{'::collectdwin::begin':} ->
-  class{'::collectdwin::install':} -> 
+  class{'::collectdwin::install':} ->
   class{'::collectdwin::config':} ->
   anchor{'::collectdwin::end':}
 }

@@ -2,7 +2,7 @@ class collectdwin::config (
   $config = $::collectdwin::params::config,
   $debug_level = $::collectdwin::params::debug_level,
   $config_file_win_perfcounter = $::collectdwin::params::config_file_win_perfcounter,
-  $config_file_write_http_ = $::collectdwin::params::config_file_win_perfcounter,
+  $config_file_write_http = $::collectdwin::params::config_file_win_perfcounter,
   $service_state = $::collectdwin::params::service_state,
   $config_write_http= $::collectdwin::params::config_write_http,
 )inherits ::collectdwin::params{
@@ -20,9 +20,9 @@ class collectdwin::config (
   notify{"pfad zu config file ${config_file_win_perfcounter}":}
 
   concat { $config_file_win_perfcounter :
-    mode => '0775',
-    path => $config_file_win_perfcounter,
-    warn => true, 
+    mode           => '0775',
+    path           => $config_file_win_perfcounter,
+    warn           => true,
     ensure_newline => true,
   }
 
@@ -38,7 +38,7 @@ class collectdwin::config (
     order   => '15',
   }
 
-  file { $config_file_write_http:
+  file { $config_file_write_http :
     ensure  => 'present',
     content => regsubst(template('collectdwin/WriteHttp.config.erb'), '\n', "\r\n", 'EMG'),
     notify  => Service['CollectdWinService'],

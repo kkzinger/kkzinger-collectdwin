@@ -4,7 +4,7 @@ class collectdwin::install (
 )inherits ::collectdwin::params{
 
   package{ 'collectdwin':
-    ensure   => $collectdwin_version,  
+    ensure   => $collectdwin_version,
     provider => 'chocolatey',
   }
   
