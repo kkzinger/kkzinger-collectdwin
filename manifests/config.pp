@@ -17,7 +17,6 @@ class collectdwin::config (
   concat { $config_file_win_perfcounter :
     mode           => '0775',
     path           => $config_file_win_perfcounter,
-    warn           => true,
     ensure_newline => true,
     notify  => Service['CollectdWinService'],
   }
@@ -39,7 +38,6 @@ class collectdwin::config (
   concat { $config_file_write_http :
     mode           => '0775',
     path           => $config_file_write_http,
-    warn           => true,
     ensure_newline => true,
     notify  => Service['CollectdWinService'],
   }
