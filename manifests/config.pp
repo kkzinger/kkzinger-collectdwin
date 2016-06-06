@@ -19,6 +19,7 @@ class collectdwin::config (
     path           => $config_file_win_perfcounter,
     warn           => true,
     ensure_newline => true,
+    notify  => Service['CollectdWinService'],
   }
 
   concat::fragment {'performance-counter-config_pre':
@@ -40,6 +41,7 @@ class collectdwin::config (
     path           => $config_file_write_http,
     warn           => true,
     ensure_newline => true,
+    notify  => Service['CollectdWinService'],
   }
 
   concat::fragment {'write-http-config_pre':
