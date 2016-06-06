@@ -52,8 +52,8 @@ class collectdwin (
   $collectdwin_version,
   $debug_level = 'Info',
   $service_state = 'running',
-  $config_write_http = undef, #make defined type for adding http destinations
-  #add variables to enable/disable each plugin
+  $config_write_http = undef, 
+ 
 ){
   anchor{'::collectdwin::begin':} ->
   class{'::collectdwin::install':} ->

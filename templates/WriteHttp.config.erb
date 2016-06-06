@@ -1,14 +1,3 @@
-<!-- This file is managed by Puppet -->
-<WriteHttp>
-  <Nodes>
-  <%- if !scope['collectdwin::config::config_write_http'].nil?
-       scope['collectdwin::config::config_write_http'].each do |target| -%>
-
-    <Node Name="<%=target['node_name']%>" Url="<%=target['url']%>" Timeout="<%=target['timeout']%>" BatchSize="<%=target['batch_size']%>" MaxIdleTime="<%=target['max_idle_time']%>">
-      <Proxy Enable="<%=target['proxy_enable']%>" Url="<%=target['proxy_url']%>" />
+    <Node Name="<%=@node_name%>" Url="<%=@url%>" Timeout="<%=@timeout%>" BatchSize="<%=@batch_size%>" MaxIdleTime="<%=@max_idle_time%>">
+      <Proxy Enable="<%=@proxy_enable%>" Url="<%=@proxy_url%>" />
     </Node>
-  <%   end
-     end
-  %>
-  </Nodes>
-</WriteHttp>
