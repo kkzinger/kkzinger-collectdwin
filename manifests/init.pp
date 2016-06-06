@@ -49,7 +49,7 @@
 # Copyright 2016 Gerold Katzinger
 #
 class collectdwin (
-  $collectdwin_version,
+  $collectdwin_version = undef,
   $debug_level = 'Info',
   $service_state = 'running',
   $config_write_http = undef, 
