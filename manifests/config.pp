@@ -5,12 +5,27 @@ class collectdwin::config (
   $config_file_write_http = $::collectdwin::params::config_file_write_http,
   $service_state = $::collectdwin::params::service_state,
   $config_write_http= $::collectdwin::params::config_write_http,
+  $plugin_writehttp = $::collectdwin::params::plugin_writehttp, 
+  $plugin_aqmp = $::collectdwin::params::plugin_aqmp,   
+  $plugin_console = $::collectdwin::params::plugin_console, 
+  $plugin_statsd = $::collectdwin::params::plugin_statsd,
+  $plugin_winperfcounter = $::collectdwin::params::plugin_winperfcounter,
+  $scan_interval = $::collectdwin::params::scan_interval,
 )inherits ::collectdwin::params{
 
   service{ 'CollectdWinService':
     ensure  => $service_state,
     require => Package['collectdwin'],
   }
+
+# config section for general configuration
+ file { $config_file_general :
+    ensure  => 'present',
+    content => regsubst(template('collectdwin/CollectdWinService.config.erb'), '\n', "\r\n", 'EMG'),
+    notify  => Service['CollectdWinService'],
+  }
+
+ 
 
 # concat section "Windows Performance Counter Plugin" for pre and post snippets of configuration xml file
 

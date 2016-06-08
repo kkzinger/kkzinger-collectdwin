@@ -52,8 +52,12 @@ class collectdwin (
   $collectdwin_version = undef,
   $debug_level = 'Info',
   $service_state = 'running',
-  $config_write_http = undef, 
- 
+  $plugin_writehttp = 'true',
+  $plugin_amqp = 'false',
+  $plugin_console = 'true',
+  $plugin_statsd = 'false',
+  $plugin_winperfcounter = 'true',
+  $scan_interval = '10', 
 ){
   anchor{'::collectdwin::begin':} ->
   class{'::collectdwin::install':} ->
