@@ -21,7 +21,7 @@ class collectdwin::config (
 # config section for general configuration
  file { $config_file_general :
     ensure  => 'present',
-    content => regsubst(template('collectdwin/CollectdWinService.config.erb'), '\n', "\r\n", 'EMG'),
+    content => regsubst(template('collectdwin/CollectdWin.config.erb'), '\n', "\r\n", 'EMG'),
     notify  => Service['CollectdWinService'],
   }
 
