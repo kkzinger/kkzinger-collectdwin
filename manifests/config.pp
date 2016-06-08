@@ -1,13 +1,15 @@
+# config.pp
 class collectdwin::config (
   $config = $::collectdwin::params::config,
   $debug_level = $::collectdwin::params::debug_level,
   $config_file_win_perfcounter = $::collectdwin::params::config_file_win_perfcounter,
   $config_file_write_http = $::collectdwin::params::config_file_write_http,
+  $config_file_general = $::collectdwin::params::config_file_general,
   $service_state = $::collectdwin::params::service_state,
   $config_write_http= $::collectdwin::params::config_write_http,
-  $plugin_writehttp = $::collectdwin::params::plugin_writehttp, 
-  $plugin_amqp = $::collectdwin::params::plugin_amqp,   
-  $plugin_console = $::collectdwin::params::plugin_console, 
+  $plugin_writehttp = $::collectdwin::params::plugin_writehttp,
+  $plugin_amqp = $::collectdwin::params::plugin_amqp,
+  $plugin_console = $::collectdwin::params::plugin_console,
   $plugin_statsd = $::collectdwin::params::plugin_statsd,
   $plugin_winperfcounter = $::collectdwin::params::plugin_winperfcounter,
   $scan_interval = $::collectdwin::params::scan_interval,
@@ -18,22 +20,20 @@ class collectdwin::config (
     require => Package['collectdwin'],
   }
 
-# config section for general configuration
- file { $config_file_general :
+  #config section for general configuration
+  file { $config_file_general :
     ensure  => 'present',
     content => regsubst(template('collectdwin/CollectdWin.config.erb'), '\n', "\r\n", 'EMG'),
     notify  => Service['CollectdWinService'],
   }
-
- 
-
-# concat section "Windows Performance Counter Plugin" for pre and post snippets of configuration xml file
+  
+  # concat section "Windows Performance Counter Plugin" for pre and post snippets of configuration xml file
 
   concat { $config_file_win_perfcounter :
     mode           => '0775',
     path           => $config_file_win_perfcounter,
     ensure_newline => true,
-    notify  => Service['CollectdWinService'],
+    notify         => Service['CollectdWinService'],
   }
 
   concat::fragment {'performance-counter-config_pre':
@@ -54,7 +54,7 @@ class collectdwin::config (
     mode           => '0775',
     path           => $config_file_write_http,
     ensure_newline => true,
-    notify  => Service['CollectdWinService'],
+    notify         => Service['CollectdWinService'],
   }
 
   concat::fragment {'write-http-config_pre':
