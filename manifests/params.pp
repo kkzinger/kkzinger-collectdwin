@@ -6,9 +6,7 @@ class collectdwin::params {
   $config = $::collectdwin::config
   $config_file_write_http ='C:/Program Files/Bloomberg LP/CollectdWin/config/WriteHttp.config'
   $config_file_win_perfcounter = 'C:/Program Files/Bloomberg LP/CollectdWin/config/WindowsPerformanceCounter.config'
-  $config_file_write_http ='C:/Program Files/Bloomberg LP/CollectdWin/config/WriteHttp.config'
   $config_file_general = 'C:/Program Files/Bloomberg LP/CollectdWin/config/CollectdWin.config'
-  $config_write_http = $::collectdwin::config_write_http
   $plugin_httpwrite = $::collectdwin::plugin_httpwrite
   $plugin_aqmp = $::collectdwin::plugin_aqmp
   $plugin_console = $::collectdwin::plugin_console
