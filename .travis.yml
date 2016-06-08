@@ -8,6 +8,8 @@ script: bundle exec rake validate && bundle exec rake lint && bundle exec rake s
 env:
 matrix:
 include:
+  - rvm: 2.0.0
+    env: PUPPET_VERSION="~> 3.8.1" FACTER_VERSION="~>2.3.0"
   - rvm: 2.1.8
     env: PUPPET_VERSION="~> 4.4.0"
   - rvm: 2.1.8
