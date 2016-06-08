@@ -6,7 +6,7 @@ class collectdwin::config (
   $service_state = $::collectdwin::params::service_state,
   $config_write_http= $::collectdwin::params::config_write_http,
   $plugin_writehttp = $::collectdwin::params::plugin_writehttp, 
-  $plugin_aqmp = $::collectdwin::params::plugin_aqmp,   
+  $plugin_amqp = $::collectdwin::params::plugin_amqp,   
   $plugin_console = $::collectdwin::params::plugin_console, 
   $plugin_statsd = $::collectdwin::params::plugin_statsd,
   $plugin_winperfcounter = $::collectdwin::params::plugin_winperfcounter,
