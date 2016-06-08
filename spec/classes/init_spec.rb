@@ -1,7 +1,7 @@
 require 'spec_helper'
-describe 'conwin_collectdwin_' do
+describe 'collectdwin' do
 
   context 'with defaults for all parameters' do
-    it { should contain_class('conwin_collectdwin_') }
+    it { should contain_class('collectdwin') }
   end
 end
