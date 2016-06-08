@@ -1,1 +1,9 @@
+## VIM
 *.swp
+tags
+
+# puppet module build
+.pkg
+
+# testing
+spec/fixtures
