@@ -63,7 +63,7 @@ class collectdwin (
   $config_file_general = $::collectdwin::params::config_file_general,
 ){
   #Parameter Validation
-  validate_re($collectdwin_version,'([0-9].){2}([0-9])$')
+  validate_re($collectdwin_version,'^(\d*\.){2}\d*$')
   validate_re($debug_level,['^Trace$','^Debug$','^Info$','^Warn$','^Error$','^Fatal$'])
   validate_re($service_state,'^(running|stopped)$')
   validate_bool($plugin_amqp)
