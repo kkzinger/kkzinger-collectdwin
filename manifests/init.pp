@@ -1,7 +1,7 @@
 # Class: collectdwin
 # ===========================
 #
-# This class enables the management of collectdwin on Windows Hosts 
+# This class enables the management of collectdwin on Windows Hosts
 #
 # Parameters
 # ----------
@@ -74,7 +74,7 @@ class collectdwin (
   validate_absolute_path($config_file_winperfcounter)
   validate_absolute_path($config_file_general)
   validate_integer($scan_interval)
-  
+
 
   anchor{'::collectdwin::begin':} ->
   class{'::collectdwin::install':} ->

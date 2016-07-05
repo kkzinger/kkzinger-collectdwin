@@ -1,4 +1,4 @@
-## 
+##
 
 define collectdwin::httpdestination (
   $node_name,
@@ -25,7 +25,7 @@ define collectdwin::httpdestination (
   #The collectdwin class has to be present in first place to be able to add a http destination
   include ::collectdwin
   $config_file_writehttp = $::collectdwin::config_file_writehttp
-  
+
   concat::fragment { $node_name:
     target  => $config_file_writehttp,
     content => regsubst(template('collectdwin/WriteHttp.config.erb'), '\n', "\r\n", 'EMG'),

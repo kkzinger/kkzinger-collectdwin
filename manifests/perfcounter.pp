@@ -1,4 +1,4 @@
-## 
+##
 
 define collectdwin::perfcounter (
   $category,

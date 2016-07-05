@@ -24,7 +24,7 @@ class collectdwin::config (
     content => regsubst(template('collectdwin/CollectdWin.config.erb'), '\n', "\r\n", 'EMG'),
     notify  => Service['CollectdWinService'],
   }
-  
+
   # concat section "Windows Performance Counter Plugin" for pre and post snippets of configuration xml file
 
   concat { $config_file_win_perfcounter :
