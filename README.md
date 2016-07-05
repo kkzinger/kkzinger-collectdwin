@@ -1,83 +1,102 @@
-# conwin_collectdwin_
-
+# collectdwin
+[![Build Status](https://travis-ci.com/kkzinger/kkzinger-collectdwin.svg?token=yPyCdfT7MLbXsdDVmTkE&branch=master)](https://travis-ci.com/kkzinger/kkzinger-collectdwin)
 #### Table of Contents
 
 1. [Description](#description)
-1. [Setup - The basics of getting started with conwin_collectdwin_](#setup)
-    * [What conwin_collectdwin_ affects](#what-conwin_collectdwin_-affects)
-    * [Setup requirements](#setup-requirements)
-    * [Beginning with conwin_collectdwin_](#beginning-with-conwin_collectdwin_)
-1. [Usage - Configuration options and additional functionality](#usage)
-1. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
-1. [Limitations - OS compatibility, etc.](#limitations)
-1. [Development - Guide for contributing to the module](#development)
+2. [Setup - The basics of getting started with collectdwin](#setup)
+    * [What collectdwin affects](#what-collectdwin-affects)
+    * [Beginning with collectdwin](#beginning-with-collectdwin)
+3. [Usage - Configuration options and additional functionality](#usage)
+4. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
+5. [Limitations - OS compatibility, etc.](#limitations)
+6. [Development - Guide for contributing to the module](#development)
 
 ## Description
 
-Start with a one- or two-sentence summary of what the module does and/or what
-problem it solves. This is your 30-second elevator pitch for your module.
-Consider including OS/Puppet version it works with.
+kkzinger-collectdwin manages the collectdwin service on Windows Platforms. This allows 
+collectd like Performance Monitoring.
 
-You can give more descriptive information in a second paragraph. This paragraph
-should answer the questions: "What does this module *do*?" and "Why would I use
-it?" If your module has a range of functionality (installation, configuration,
-management, etc.), this is the time to mention it.
+The Module is able to add Performance Counters to the collectdwin configuration, and definition of destinations where the metrics should be sent via http-post. 
 
 ## Setup
 
-### What conwin_collectdwin_ affects **OPTIONAL**
+### What collectdwin affects
 
-If it's obvious what your module touches, you can skip this section. For
-example, folks can probably figure out that your mysql_instance module affects
-their MySQL instances.
+collectdwin will be installed through chocolatey. If the system has no internet access 
+a local chocolatey mirror has to be provided.
 
-If there's more that they should know about, though, this is the place to mention:
+### Beginning with collectdwin
 
-* A list of files, packages, services, or operations that the module will alter,
-  impact, or execute.
-* Dependencies that your module automatically installs.
-* Warnings or other important notices.
-
-### Setup Requirements **OPTIONAL**
-
-If your module requires anything extra before setting up (pluginsync enabled,
-etc.), mention it here.
-
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you might want to include an additional "Upgrading" section
-here.
-
-### Beginning with conwin_collectdwin_
-
-The very basic steps needed for a user to get the module up and running. This
-can include setup steps, if necessary, or it can be an example of the most
-basic use of the module.
+Basic deployment of collectdwin on node.
+~~~puppet
+    class { '::collectdwin' :
+      collectdwin_version => '0.5.14',
+      debug_level         => 'Info',
+      service_state       => 'running',
+    }
+~~~
 
 ## Usage
 
-This section is where you describe how to customize, configure, and do the
-fancy stuff with your module here. It's especially helpful if you include usage
-examples and code samples for doing things with your module.
+To add a new destination to metrics the ::collectdwin::httpdestination define has to 
+used.
+
+~~~puppet
+  ::collectdwin::httpdestination{
+    'graphite-flask': 
+    node_name     => 'conmondev001-graphite-flask',
+    url           => 'https://192.168.1.1:8888/',
+    timeout       => '100',
+    batch_size    => '30',
+    max_idle_time => '600000',
+    proxy_enable  => false,
+    proxy_url     => '',
+  }                                                                                                                                                            
+~~~
+
+To add Performance Counters that should be read from collectdwin the ::collectdwin::percounter define can be used.
+
+~~~puppet
+  ::collectdwin::perfcounter{
+    'cpu_foo':     
+              category          => 'Processor',
+              counter_name      => '% Processor Time',
+              instance          => '_Total',
+              cd_plugin         => 'cpu',
+              cd_plugininstance => 'cpu-average',
+              cd_type           => 'cpu',
+              cd_typeinstance   => 'processor'; 
+    'mem_foo': 
+              category          => 'Memory',
+              counter_name      => 'Available Bytes',
+              instance          => '',
+              cd_plugin         => 'memory',
+              cd_plugininstance => '',
+              cd_type           => 'memory',
+              cd_typeinstance   => 'free'; 
+  }
+~~~
 
 ## Reference
 
-Here, include a complete list of your module's classes, types, providers,
-facts, along with the parameters for each. Users refer to this section (thus
-the name "Reference") to find specific details; most users don't read it per
-se.
+Classes:
+* collectdwin
+* collectdwin::params
+* collectdwin::install
+* collectdwin::config
+
+Defines:
+* collectdwin::httpdestination
+* collectdwin::perfcounter
 
 ## Limitations
 
-This is where you list OS compatibility, version compatibility, etc. If there
-are Known Issues, you might want to include them under their own heading here.
+* Managment of AMQP Plugin is not implemented
+* Managment of STATSD Plugin is not implemented
 
 ## Development
 
-Since your module is awesome, other users will want to play with it. Let them
-know what the ground rules for contributing are.
+Patches are very welcome!
+Please send your pull requests on github!
 
-## Release Notes/Contributors/Etc. **Optional**
 
-If you aren't using changelog, put your release notes here (though you should
-consider using changelog). You can also add any additional sections you feel
-are necessary or important to include here. Please use the `## ` header.
