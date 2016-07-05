@@ -10,11 +10,21 @@ define collectdwin::httpdestination (
   $proxy_url,
 ){
 
-  require ::collectdwin::params
+  #Parameter Validation
+  validate_string($node_name)
+  validate_string($url)
+  validate_integer($timeout)
+  validate_integer($batch_size)
+  validate_integer($max_idle_time)
+  validate_re($proxy_enable, '^(true|false)$')
+  validate_string($proxy_url)
   
-  $config_file_write_http = $::collectdwin::params::config_file_write_http
+  #The collectdwin class has to be present in first place to be able to add a http destination
+  include ::collectdwin
+  $config_file_writehttp = $::collectdwin::config_file_writehttp
+  
   concat::fragment { $node_name:
-    target  => $config_file_write_http,
+    target  => $config_file_writehttp,
     content => regsubst(template('collectdwin/WriteHttp.config.erb'), '\n', "\r\n", 'EMG'),
     order   => '10',
   }

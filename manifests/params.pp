@@ -1,20 +1,16 @@
+##
 class collectdwin::params {
 
-  $collectdwin_version = $::collectdwin::collectdwin_version
-  $service_state = $::collectdwin::service_state
-  $debug_level = $::collectdwin::debug_level
-  $config = $::collectdwin::config
-  $config_file_write_http ='C:/Program Files/Bloomberg LP/CollectdWin/config/WriteHttp.config'
-  $config_file_win_perfcounter = 'C:/Program Files/Bloomberg LP/CollectdWin/config/WindowsPerformanceCounter.config'
+  $collectdwin_version = undef
+  $service_state = 'running'
+  $debug_level = 'Info'
+  $config_file_writehttp ='C:/Program Files/Bloomberg LP/CollectdWin/config/WriteHttp.config'
+  $config_file_winperfcounter = 'C:/Program Files/Bloomberg LP/CollectdWin/config/WindowsPerformanceCounter.config'
   $config_file_general = 'C:/Program Files/Bloomberg LP/CollectdWin/config/CollectdWin.config'
-  $plugin_writehttp = $::collectdwin::plugin_writehttp
-  $plugin_amqp = $::collectdwin::plugin_amqp
-  $plugin_console = $::collectdwin::plugin_console
-  $plugin_statsd = $::collectdwin::plugin_statsd
-  $plugin_winperfcounter = $::collectdwin::plugin_winperfcounter
-  $scan_interval = $::collectdwin::scan_interval
-
-
-
-
+  $plugin_writehttp = true
+  $plugin_amqp = false
+  $plugin_console = true
+  $plugin_statsd = false
+  $plugin_winperfcounter = true
+  $scan_interval = '10'
 }

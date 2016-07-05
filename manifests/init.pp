@@ -49,16 +49,33 @@
 # Copyright 2016 Gerold Katzinger
 #
 class collectdwin (
-  $collectdwin_version = undef,
-  $debug_level = 'Info',
-  $service_state = 'running',
-  $plugin_writehttp = true,
-  $plugin_amqp = false,
-  $plugin_console = true,
-  $plugin_statsd = false,
-  $plugin_winperfcounter = true,
-  $scan_interval = '10',
+  $collectdwin_version = $::collectdwin::params::collectdwin_version,
+  $debug_level = $::collectdwin::params::debug_level,
+  $service_state = $::collectdwin::params::service_state,
+  $plugin_writehttp = $::collectdwin::params::plugin_writehttp,
+  $plugin_amqp = $::collectdwin::params::plugin_aqmp,
+  $plugin_console = $::collectdwin::params::plugin_console,
+  $plugin_statsd = $::collectdwin::params::plugin_statsd,
+  $plugin_winperfcounter = $::collectdwin::params::plugin_winperfcounter,
+  $scan_interval = $::collectdwin::params::scan_interval,
+  $config_file_writehttp = $::collectdwin::param::config_file_writehttp,
+  $config_file_winperfcounter = $::collectdwin::params::config_file_winperfcounter,
+  $config_file_general = $::collectdwin::params::config_file_general,
 ){
+  #Parameter Validation
+  validate_re($collectdwin_version,'([0-9].){2}([0-9])$')
+  validate_re($debug_level,['^Trace$','^Debug$','^Info$','^Warn$','^Error$','^Fatal$'])
+  validate_re($service_state,'^(running|stopped)$')
+  validate_bool($plugin_amqp)
+  validate_bool($plugin_console)
+  validate_bool($plugin_statsd)
+  validate_bool($plugin_winperfcounter)
+  validate_absolute_path($config_file_writehttp)
+  validate_absolute_path($config_file_winperfcounter)
+  validate_absolute_path($config_file_general)
+  validate_integer($scan_interval)
+  
+
   anchor{'::collectdwin::begin':} ->
   class{'::collectdwin::install':} ->
   class{'::collectdwin::config':} ->

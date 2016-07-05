@@ -1,18 +1,16 @@
 # config.pp
 class collectdwin::config (
-  $config = $::collectdwin::params::config,
-  $debug_level = $::collectdwin::params::debug_level,
-  $config_file_win_perfcounter = $::collectdwin::params::config_file_win_perfcounter,
-  $config_file_write_http = $::collectdwin::params::config_file_write_http,
-  $config_file_general = $::collectdwin::params::config_file_general,
-  $service_state = $::collectdwin::params::service_state,
-  $config_write_http= $::collectdwin::params::config_write_http,
-  $plugin_writehttp = $::collectdwin::params::plugin_writehttp,
-  $plugin_amqp = $::collectdwin::params::plugin_amqp,
-  $plugin_console = $::collectdwin::params::plugin_console,
-  $plugin_statsd = $::collectdwin::params::plugin_statsd,
-  $plugin_winperfcounter = $::collectdwin::params::plugin_winperfcounter,
-  $scan_interval = $::collectdwin::params::scan_interval,
+  $debug_level                 = $::collectdwin::debug_level,
+  $config_file_win_perfcounter = $::collectdwin::config_file_winperfcounter,
+  $config_file_write_http      = $::collectdwin::config_file_writehttp,
+  $config_file_general         = $::collectdwin::config_file_general,
+  $service_state               = $::collectdwin::service_state,
+  $plugin_writehttp            = $::collectdwin::plugin_writehttp,
+  $plugin_amqp                 = $::collectdwin::plugin_amqp,
+  $plugin_console              = $::collectdwin::plugin_console,
+  $plugin_statsd               = $::collectdwin::plugin_statsd,
+  $plugin_winperfcounter       = $::collectdwin::plugin_winperfcounter,
+  $scan_interval               = $::collectdwin::scan_interval,
 )inherits ::collectdwin::params{
 
   service{ 'CollectdWinService':
