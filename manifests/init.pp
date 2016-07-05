@@ -53,7 +53,7 @@ class collectdwin (
   $debug_level = $::collectdwin::params::debug_level,
   $service_state = $::collectdwin::params::service_state,
   $plugin_writehttp = $::collectdwin::params::plugin_writehttp,
-  $plugin_amqp = $::collectdwin::params::plugin_aqmp,
+  $plugin_amqp = $::collectdwin::params::plugin_amqp,
   $plugin_console = $::collectdwin::params::plugin_console,
   $plugin_statsd = $::collectdwin::params::plugin_statsd,
   $plugin_winperfcounter = $::collectdwin::params::plugin_winperfcounter,
