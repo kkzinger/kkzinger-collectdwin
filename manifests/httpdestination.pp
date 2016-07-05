@@ -16,9 +16,12 @@ define collectdwin::httpdestination (
   validate_integer($timeout)
   validate_integer($batch_size)
   validate_integer($max_idle_time)
-  validate_re($proxy_enable, '^(true|false)$')
-  validate_string($proxy_url)
-  
+  validate_bool($proxy_enable)
+  if($proxy_enable == true)
+  {
+    validate_string($proxy_url)
+  }
+
   #The collectdwin class has to be present in first place to be able to add a http destination
   include ::collectdwin
   $config_file_writehttp = $::collectdwin::config_file_writehttp
