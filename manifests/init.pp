@@ -58,7 +58,7 @@ class collectdwin (
   $plugin_statsd = $::collectdwin::params::plugin_statsd,
   $plugin_winperfcounter = $::collectdwin::params::plugin_winperfcounter,
   $scan_interval = $::collectdwin::params::scan_interval,
-  $config_file_writehttp = $::collectdwin::param::config_file_writehttp,
+  $config_file_writehttp = $::collectdwin::params::config_file_writehttp,
   $config_file_winperfcounter = $::collectdwin::params::config_file_winperfcounter,
   $config_file_general = $::collectdwin::params::config_file_general,
 )inherits ::collectdwin::params{
