@@ -15,7 +15,8 @@
 #   Defines logfile verbosity level of collectdwin (Trace, Debug, Info, Warn, Error and Fatal) Default: Info
 #
 # [*service_state*]
-#   Collectdwin uses a windows service to run measurements as daemon. This parameter controls if the service should be in 'running' or 'stopped' status. Default: running
+#   Collectdwin uses a windows service to run measurements as daemon.
+#   This parameter controls if the service should be in 'running' or 'stopped' status. Default: running
 #
 #
 # Variables
