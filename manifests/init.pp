@@ -77,7 +77,7 @@ class collectdwin (
   $config_file_winperfcounter = $::collectdwin::params::config_file_winperfcounter,
   $config_file_general = $::collectdwin::params::config_file_general,
 )inherits ::collectdwin::params{
-  
+
   #Parameter Validation
   validate_re($collectdwin_version,'^(\d*\.){2}\d*$')
   validate_re($debug_level,['^Trace$','^Debug$','^Info$','^Warn$','^Error$','^Fatal$'])

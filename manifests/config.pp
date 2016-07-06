@@ -1,4 +1,25 @@
-# config.pp
+# Class: collectdwin::config
+# ===========================
+#
+# This class writes configuration to collectdwin and refreshes the service
+# if needed.
+#
+# Parameters
+# ----------
+#
+# Examples
+# --------
+#
+# Authors
+# -------
+#
+# Gerold Katzinger <gerold@katzinger.info>
+#
+# Copyright
+# ---------
+#
+# Copyright 2016 Gerold Katzinger
+
 class collectdwin::config (
   $debug_level                 = $::collectdwin::debug_level,
   $config_file_win_perfcounter = $::collectdwin::config_file_winperfcounter,

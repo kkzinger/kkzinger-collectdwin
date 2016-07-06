@@ -1,4 +1,24 @@
-##
+# Class: collectdwin::params
+# ===========================
+#
+# This class defines some default values
+#
+# Parameters
+# ----------
+#
+# Examples
+# --------
+#
+# Authors
+# -------
+#
+# Gerold Katzinger <gerold@katzinger.info>
+#
+# Copyright
+# ---------
+#
+# Copyright 2016 Gerold Katzinger
+
 class collectdwin::params {
 
   $collectdwin_version = undef
