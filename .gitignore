@@ -3,7 +3,7 @@
 tags
 
 # puppet module build
-.pkg
+pkg
 
 # testing
 spec/fixtures
