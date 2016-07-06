@@ -18,26 +18,40 @@
 #   Collectdwin uses a windows service to run measurements as daemon.
 #   This parameter controls if the service should be in 'running' or 'stopped' status. Default: running
 #
+# [*plugin_writehttp*]
+#   This flag enables the writehttp plugin of collectdwin if set to true
 #
-# Variables
-# ----------
+# [*plugin_amqp*]
+#   This flag enables the amqp plugin of collectdwin if set to true
 #
-# Here you should define a list of variables that this module would require.
+# [*plugin_console*]
+#   This flag enables the console plugin of collectdwin if set to true
 #
-# * `sample variable`
-#  Explanation of how this variable affects the function of this class and if
-#  it has a default. e.g. "The parameter enc_ntp_servers must be set by the
-#  External Node Classifier as a comma separated list of hostnames." (Note,
-#  global variables should be avoided in favor of class parameters as
-#  of Puppet 2.6.)
+# [*plugin_statsd*]
+#   This flag enables the statsd plugin of collectdwin if set to true
+#
+# [*plugin_winperfcounter*]
+#   This flag enables the windows performance counter plugin of collectdwin if set to true
+#
+# [*scan_interval*]
+#   The value of this parameter configures the meassurement interval of collectdwin in seconds
+#
+# [*config_file_writehttp*]
+#   Absolute Path of configuration file for writehttp plugin
+#
+# [*config_file_winperfcounter*]
+#   Absolute Path of configuration file for windows performance counter plugin
+#
+# [*config_file_general*]
+#   Absolute Path to general configuration file of collectdwin
 #
 # Examples
 # --------
 #
-# @example
-#    class { 'collectdwin_':
-#      servers => [ 'pool.ntp.org', 'ntp.local.company.com' ],
-#    }
+# class { 'collectdwin_':
+#   collectdwin_version => '0.5.14',
+#   debug_level         => 'Trace',
+# }
 #
 # Authors
 # -------
@@ -63,6 +77,7 @@ class collectdwin (
   $config_file_winperfcounter = $::collectdwin::params::config_file_winperfcounter,
   $config_file_general = $::collectdwin::params::config_file_general,
 )inherits ::collectdwin::params{
+  
   #Parameter Validation
   validate_re($collectdwin_version,'^(\d*\.){2}\d*$')
   validate_re($debug_level,['^Trace$','^Debug$','^Info$','^Warn$','^Error$','^Fatal$'])

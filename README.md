@@ -44,7 +44,7 @@ used.
 ~~~puppet
   ::collectdwin::httpdestination{
     'graphite-flask': 
-    node_name     => 'conmondev001-graphite-flask',
+    node_name     => 'graphite-flask-bridge',
     url           => 'https://192.168.1.1:8888/',
     timeout       => '100',
     batch_size    => '30',
