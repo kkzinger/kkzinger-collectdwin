@@ -91,6 +91,11 @@ class collectdwin (
   validate_absolute_path($config_file_general)
   validate_integer($scan_interval)
 
+  if $::osfamily != 'windows'
+  {
+    fail{"Module does not support ${::operatingsystem}":}
+  }
+
 
   anchor{'::collectdwin::begin':} ->
   class{'::collectdwin::install':} ->
