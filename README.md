@@ -1,5 +1,5 @@
 # collectdwin
-[![Build Status](https://travis-ci.com/kkzinger/kkzinger-collectdwin.svg?token=yPyCdfT7MLbXsdDVmTkE&branch=master)](https://travis-ci.com/kkzinger/kkzinger-collectdwin)
+[![Build Status](https://travis-ci.org/kkzinger/kkzinger-collectdwin.svg?branch=master)](https://travis-ci.org/kkzinger/kkzinger-collectdwin.svg?branch=master)
 #### Table of Contents
 
 1. [Description](#description)
