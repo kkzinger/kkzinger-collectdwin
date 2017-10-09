@@ -33,11 +33,17 @@ class collectdwin::config (
   $plugin_statsd               = $::collectdwin::plugin_statsd,
   $plugin_winperfcounter       = $::collectdwin::plugin_winperfcounter,
   $scan_interval               = $::collectdwin::scan_interval,
+  $hostname                    = $::collectdwin::hostname,
 )inherits ::collectdwin::params{
 
   service{ 'CollectdWinService':
     ensure  => $service_state,
     require => Package['collectdwin'],
+  }
+
+  $_hostname = ''
+  if $hostname != undef {
+    $_hostname = "Hostname=\"${hostname}\""
   }
 
   #config section for general configuration
