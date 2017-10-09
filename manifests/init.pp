@@ -100,8 +100,8 @@ class collectdwin (
   }
 
 
-  anchor{'::collectdwin::begin':} ->
-  class{'::collectdwin::install':} ->
-  class{'::collectdwin::config':} ->
-  anchor{'::collectdwin::end':}
+  anchor{'::collectdwin::begin':}
+  -> class{'::collectdwin::install':}
+  -> class{'::collectdwin::config':}
+  -> anchor{'::collectdwin::end':}
 }
