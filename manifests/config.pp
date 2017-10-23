@@ -41,9 +41,11 @@ class collectdwin::config (
     require => Package['collectdwin'],
   }
 
-  $_hostname = ''
+
   if $hostname != undef {
     $_hostname = "Hostname=\"${hostname}\""
+  } else {
+    $_hostname = ''
   }
 
   #config section for general configuration
