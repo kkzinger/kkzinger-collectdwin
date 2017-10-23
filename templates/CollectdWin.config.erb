@@ -1,6 +1,6 @@
 <CollectdWinConfig>
 
-  <GeneralSettings Interval="<%=@scan_interval%>" Timeout="120" StoreRates="false" />
+  <GeneralSettings Interval="<%=@scan_interval%>" Timeout="120" StoreRates="false" <%=@_hostname%>/>
    
   <Plugins>
     <Plugin Name="Statsd" Class="BloombergFLP.CollectdWin.StatsdPlugin" Enable="<%=@plugin_statsd%>" />

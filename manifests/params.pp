@@ -35,4 +35,5 @@ class collectdwin::params {
   $plugin_statsd = false
   $plugin_winperfcounter = true
   $scan_interval = '10'
+  $hostname = undef
 }
