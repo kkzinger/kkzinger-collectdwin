@@ -13,16 +13,16 @@
 
 ## Description
 
-kkzinger-collectdwin manages the collectdwin service on Windows Platforms. This allows 
+kkzinger-collectdwin manages the collectdwin service on Windows Platforms. This allows
 collectd like Performance Monitoring.
 
-The Module is able to add Performance Counters to the collectdwin configuration, and definition of destinations where the metrics should be sent via http-post. 
+The Module is able to add Performance Counters to the collectdwin configuration, and definition of destinations where the metrics should be sent via http-post.
 
 ## Setup
 
 ### What collectdwin affects
 
-collectdwin will be installed through chocolatey. If the system has no internet access 
+collectdwin will be installed through chocolatey. If the system has no internet access
 a local chocolatey mirror has to be provided.
 
 ### Beginning with collectdwin
@@ -33,17 +33,18 @@ Basic deployment of collectdwin on node.
       collectdwin_version => '0.5.14',
       debug_level         => 'Info',
       service_state       => 'running',
+      hostname            => 'app-server.domain.com',
     }
 ~~~
 
 ## Usage
 
-To add a new destination to metrics the ::collectdwin::httpdestination define has to 
+To add a new destination to metrics the ::collectdwin::httpdestination define has to
 used.
 
 ~~~puppet
   ::collectdwin::httpdestination{
-    'graphite-flask': 
+    'graphite-flask':
     node_name     => 'graphite-flask-bridge',
     url           => 'https://192.168.1.1:8888/',
     timeout       => '100',
@@ -51,29 +52,31 @@ used.
     max_idle_time => '600000',
     proxy_enable  => false,
     proxy_url     => '',
-  }                                                                                                                                                            
+    username      => 'john',
+    password      => 'securepassword',
+  }
 ~~~
 
 To add Performance Counters that should be read from collectdwin the ::collectdwin::percounter define can be used.
 
 ~~~puppet
   ::collectdwin::perfcounter{
-    'cpu_foo':     
+    'cpu_foo':
               category          => 'Processor',
               counter_name      => '% Processor Time',
               instance          => '_Total',
               cd_plugin         => 'cpu',
               cd_plugininstance => 'cpu-average',
               cd_type           => 'cpu',
-              cd_typeinstance   => 'processor'; 
-    'mem_foo': 
+              cd_typeinstance   => 'processor';
+    'mem_foo':
               category          => 'Memory',
               counter_name      => 'Available Bytes',
               instance          => '',
               cd_plugin         => 'memory',
               cd_plugininstance => '',
               cd_type           => 'memory',
-              cd_typeinstance   => 'free'; 
+              cd_typeinstance   => 'free';
   }
 ~~~
 
@@ -98,5 +101,3 @@ Defines:
 
 Patches are very welcome!
 Please send your pull requests on github!
-
-
