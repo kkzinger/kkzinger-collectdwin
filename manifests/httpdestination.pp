@@ -80,15 +80,17 @@ define collectdwin::httpdestination (
   #The collectdwin class has to be present in first place to be able to add a http destination
   include ::collectdwin
   $config_file_writehttp = $::collectdwin::config_file_writehttp
-
-  $_username = ''
+  
   if $username != undef {
     $_username = "UserName=\"${username}\""
+  } else {
+    $_username = ''
   }
 
-  $_password = ''
   if $password != undef {
     $_password = "Password=\"${password}\""
+  } else {
+    $_password = ''
   }
 
 
