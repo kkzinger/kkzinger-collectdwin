@@ -43,7 +43,7 @@ class collectdwin::config (
 
 
   if $hostname != undef {
-    $_hostname = "Hostname=\"${hostname}\""
+    $_hostname = "HostName=\"${hostname}\""
   } else {
     $_hostname = ''
   }
