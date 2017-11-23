@@ -1,6 +1,6 @@
 {
   "name": "kkzinger-collectdwin",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Gerold Katzinger",
   "summary": "Installs collectdwin on Windows Host and is able to configure it.",
   "license": "Apache-2.0",
